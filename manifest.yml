@@ -1,0 +1,17 @@
+applications:
+- name: hello_ps_pcf
+  path: ./target/hello_spring_pcf-0.0.1-SNAPSHOT.jar
+  disk_quota: 900M
+  health-check-type: port
+  health-check-timeout: 90
+  instances: 2
+  memory: 1G
+  routes:
+  - route: hellopspcf.cfapps.io
+  stack: cflinuxfs3
+  env:
+    JBP_CONFIG_DEBUG: '{enabled: true}'
+properties:
+    cc:
+        allow_app_ssh_access: true
+        default_app_ssh_access: true
